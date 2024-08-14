@@ -1,0 +1,14 @@
+version: "1.0"
+services:
+  todoapp:
+    build: .
+    ports:
+     - "3000:3000"
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+     - "8080:80"
+    depends_on:
+      - todoapp
